@@ -19,7 +19,7 @@ print (text_strippped)
 
 g = open("kalyani sancari.txt", "a", encoding = "utf-8")
 
-g.seek(0)                                   # deletes existing contents
+g.seek(0)                                   #  deletes existing contents
 g.truncate()
 
 g.write(text_strippped)

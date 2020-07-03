@@ -37,7 +37,7 @@ kalyani = [swara_dictionary["S1"], swara_dictionary["R2"], swara_dictionary["G3"
            swara_dictionary["M2"], swara_dictionary["P"], swara_dictionary["D2"],
            swara_dictionary["N3"], swara_dictionary["S2"]]
 
-######################################## SPURITHAM and PRATYAGHATAM ################################################
+######################################## SPURITHAM and PRATYAGHATAM #################################################
 
 def spuritham (ragam, duration, note):
    
@@ -54,7 +54,7 @@ test = np.concatenate((hold_note (swara_dictionary["P"], 1), spuritham (kalyani,
 write('testspuritham.wav', sps, test)
 
 
-######################################## KAMPITAM ####################################################
+######################################## KAMPITAM ######################################################
 
 
 def kampita (duration, note):
