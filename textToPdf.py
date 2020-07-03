@@ -5,21 +5,26 @@ Spyder Editor
 This is a temporary script file.
 
 """
-import PyPDF2
+import fitz
 
-pdfFileObj = open('ssp_7to12.pdf','rb')     #'rb' for read binary mode
-pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
-print(pdfReader.numPages)
+doc = fitz.open('ssp_7to12.pdf')
+toc = doc.getToC()
+print (toc)  
 
+page = doc[211]
+text = page.getText('text')
+print(text)
+text_strippped = ''.join(text.split())
+print (text_strippped)
 
-pageObj = pdfReader.getPage(197)          #'9' is the page number
-result = pageObj.extractText()
+g = open("kalyani sancari.txt", "a", encoding = "utf-8")
 
-print(result)
+g.seek(0)                                   # deletes existing contents
+g.truncate()
 
-f = open("demofile.txt", "a", encoding = "utf-8")
-f.write(result)
-f.close()
+g.write(text_strippped)
+g.close()
+
 
 
 
