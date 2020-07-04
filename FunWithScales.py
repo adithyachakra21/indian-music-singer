@@ -72,6 +72,13 @@ write('LowSAHighSA_clicks.wav', sps, output_concat)
 ################# PLAYING SCALES: in the key C-sharp #################
 
 swara_dictionary = {
+    "p": 103.83,
+    "d1": 110.00,
+    "d2": 116.54,
+    "d3": 123.47,
+    "n1": 116.54,
+    "n2": 123.47,
+    "n3": 130.81,
     "S1": 138.59,
     "R1": 146.83,
     "R2": 155.56,
@@ -88,11 +95,19 @@ swara_dictionary = {
     "N1": 233.08,
     "N2": 246.94,
     "N3": 261.63,
-    "S2": 277.18
+    "S2": 277.18,
+    "rr1": 293.66,
+    "rr2": 311.13,
+    "rr3": 329.63,
+    "gg1": 311.13,
+    "gg2": 329.63,
+    "gg3": 349.23,
+    "mm1": 369.99,
+    "mm2": 392.00,
+    "pp": 415.30
 }
 
-# How to call an item from the dictionary 
-print (swara_dictionary["N1"])
+
 
 shankarabharanam = np.concatenate((hold_note(swara_dictionary["S1"], 1), 
                                 hold_note(swara_dictionary["R2"], 1),
@@ -138,7 +153,7 @@ write('rasikapriya.wav', sps, rasikapriya)
 
 
 frequencies = np.linspace (swara_dictionary["S1"], swara_dictionary["S2"], num=40)
-print (frequencies)
+
 
 # output is the array that will contain the frequencies of the full jaaru 
 
@@ -170,7 +185,7 @@ write('jaaru_clicks.wav', sps, output)
 # list of all frequencies between start and end note
 
 frequencies = np.linspace (swara_dictionary["S1"], swara_dictionary["S2"], num=40)
-print (frequencies)
+ 
 
 # output is the array that will contain the frequencies of the full jaaru 
 
@@ -200,9 +215,7 @@ for i in range (0, len(frequencies)):
            
     time = n*period
     output = np.concatenate((output, hold_note(freq, time)))
-    print (n)
-    print (period)
-    print (time)
+    
        
 write('jaaru.wav', sps, output)
 

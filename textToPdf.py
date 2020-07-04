@@ -9,13 +9,13 @@ import fitz
 
 doc = fitz.open('ssp_7to12.pdf')
 toc = doc.getToC()
-print (toc)  
+#print (toc)  
 
 page = doc[211]
 text = page.getText('text')
-print(text)
+#print(text)
 text_strippped = ''.join(text.split())
-print (text_strippped)
+#print (text_strippped)
 
 g = open("kalyani sancari.txt", "a", encoding = "utf-8")
 
@@ -24,7 +24,4 @@ g.truncate()
 
 g.write(text_strippped)
 g.close()
-
-
-
 

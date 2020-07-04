@@ -8,34 +8,25 @@ Created on Fri Jul  3 14:45:39 2020
 # CONTENTS: This file contains functions that execute the 10 types of gamakas written in the SSP.
 #           Beneath each file is a test of that gamakam working in Ragam Kalyani.
 
-
-################################### REFERENCE: IMPORTANT SYMBOLS ##########################################
-
-"""
-
-Talam mid-cycle: |
-Talam end-cycle: ∥
-
-Mandara Stayi: d. is low pa
-Tara Stayi: ˙S is high sa
-
-Etra Jaaru: d/n
-Irakka Jaaru: n\s    
-Nokku: Swns is s n s with nokku on n
-Orikai: pm⋎g⋎r is p m g r with orikai on g and r  
-Odukkal: pd/×n is p d n with odukkal on n  
-Ravai: p∧pm is p p m with ravai on second p  
-Kandipu: p✓mG is p m g with kandipu on m  
-Vali: s⌢N is s N with vali on N and small s  
-Spuritham or Pratyaghatam: s∴s or s∵s
-Kampitam: mp∼∼∼D is m p d with kampitam on d
-   
-"""
 from FunWithScales import*
 
-kalyani = [swara_dictionary["S1"], swara_dictionary["R2"], swara_dictionary["G3"],
+kalyani = [swara_dictionary["p"],swara_dictionary["d2"], swara_dictionary["n3"], 
+           swara_dictionary["S1"],swara_dictionary["R2"], swara_dictionary["G3"],
            swara_dictionary["M2"], swara_dictionary["P"], swara_dictionary["D2"],
-           swara_dictionary["N3"], swara_dictionary["S2"]]
+           swara_dictionary["N3"], swara_dictionary["S2"], swara_dictionary["rr2"],
+           swara_dictionary["gg3"], swara_dictionary["mm2"], swara_dictionary["pp"]]
+
+thodi = [swara_dictionary["p"],swara_dictionary["d1"], swara_dictionary["n2"],
+         swara_dictionary["S1"], swara_dictionary["R1"], swara_dictionary["G2"],
+           swara_dictionary["M1"], swara_dictionary["P"], swara_dictionary["D1"],
+           swara_dictionary["N2"], swara_dictionary["S2"], swara_dictionary["rr1"],
+           swara_dictionary["gg2"], swara_dictionary["mm1"], swara_dictionary["pp"]]
+
+rasikapriya = [swara_dictionary["p"],swara_dictionary["d3"], swara_dictionary["n3"],
+               swara_dictionary["S1"], swara_dictionary["R3"], swara_dictionary["G3"],
+           swara_dictionary["M2"], swara_dictionary["P"], swara_dictionary["D3"],
+           swara_dictionary["N3"], swara_dictionary["S2"], swara_dictionary["rr3"],
+           swara_dictionary["gg3"], swara_dictionary["mm2"], swara_dictionary["pp"]]
 
 ######################################## SPURITHAM and PRATYAGHATAM #################################################
 
@@ -179,3 +170,27 @@ test7 = np.concatenate((hold_note (swara_dictionary["N3"], 1),
                        ravai (swara_dictionary["D2"], swara_dictionary["P"], 1),
                        hold_note(swara_dictionary["P"], 1)))
 write('testravai.wav', sps, test7)
+
+
+############################################# VALI ##############################################################
+
+
+def vali (ragam, note, duration):
+    higher_note = higher_note = ragam [ragam.index(note)+1]
+    output = np.concatenate ((hold_note (note, duration/4),
+                              jaaru(note, higher_note, duration/4, 20), 
+                              jaaru(higher_note, note, duration/4, 20),
+                              hold_note (note, duration/4)))
+    
+    return output
+
+
+# test vali kalyani da
+test8 = np.concatenate((hold_note (swara_dictionary["P"], 1),
+                       vali (kalyani, swara_dictionary["D2"], 1),
+                       hold_note(swara_dictionary["N3"], 1)))
+write('testvali.wav', sps, test8)
+
+
+    
+  
